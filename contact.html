@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardens | Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(26, 71, 42, 0.9), rgba(45, 90, 39, 0.8)), 
+                        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-option {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .contact-icon i {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+        }
+        
+        .contact-form-section {
+            background: var(--light-green);
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+        
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(45, 90, 39, 0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+        }
+        
+        .contact-type-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-type-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--light-green);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .contact-type-btn.active {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+        
+        .corporate-form {
+            display: none;
+            background: rgba(45, 90, 39, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        
+        .corporate-form.active {
+            display: block;
+        }
+        
+        .faq-section {
+            background: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1.5rem 0;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+        
+        .contact-map {
+            height: 400px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin: 3rem 0;
+            overflow: hidden;
+        }
+        
+        .team-section {
+            background: linear-gradient(135deg, #1a472a, #2d5a27);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1><i class="fas fa-leaf"></i> Gardens</h1></a>
+            </div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="boxes.html">Boxes</a></li>
+                    <li><a href="gardeners-hub.html">Gardeners Hub</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p class="subtitle">We're here to help with all your gardening questions and needs</p>
+            <p>Our team of gardening experts is ready to assist you. Choose the best way to reach us below.</p>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="contact-options-section">
+        <div class="container">
+            <div class="contact-options">
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>For general inquiries and support</p>
+                    <a href="mailto:hello@gardens.com" class="btn-small">hello@gardens.com</a>
+                    <p class="response-time">Response time: 24 hours</p>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>For urgent matters and sales inquiries</p>
+                    <a href="tel:+442012345678" class="btn-small">+44 20 1234 5678</a>
+                    <p class="hours">Mon-Fri: 9AM-6PM GMT</p>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Instant help from our gardening experts</p>
+                    <button class="btn-small" id="live-chat-btn">Start Live Chat</button>
+                    <p class="availability">Available: 8AM-8PM GMT</p>
+                </div>
+                
+                <div class="contact-option">
+                    <div class="contact-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Corporate Inquiries</h3>
+                    <p>For business partnerships and bulk orders</p>
+                    <a href="mailto:corporate@gardens.com" class="btn-small">corporate@gardens.com</a>
+                    <p class="dedicated-support">Dedicated account manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below and we'll get back to you as soon as possible</p>
+            </div>
+            
+            <div class="contact-type-selector">
+                <button class="contact-type-btn active" data-type="general">General Inquiry</button>
+                <button class="contact-type-btn" data-type="support">Customer Support</button>
+                <button class="contact-type-btn" data-type="corporate">Corporate Inquiry</button>
+                <button class="contact-type-btn" data-type="expert">Ask an Expert</button>
+                <button class="contact-type-btn" data-type="feedback">Feedback & Suggestions</button>
+            </div>
+            
+            <form class="contact-form" id="main-contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="garden-type">Type of Garden (Optional)</label>
+                    <select id="garden-type" name="garden-type">
+                        <option value="">Select your garden type</option>
+                        <option value="balcony">Balcony/Patio</option>
+                        <option value="backyard">Backyard Garden</option>
+                        <option value="allotment">Allotment</option>
+                        <option value="indoor">Indoor Garden</option>
+                        <option value="community">Community Garden</option>
+                        <option value="none">I don't have a garden yet</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Gardening Experience (Optional)</label>
+                    <select id="experience" name="experience">
+                        <option value="">Select your experience level</option>
+                        <option value="beginner">Beginner (0-1 years)</option>
+                        <option value="intermediate">Intermediate (1-5 years)</option>
+                        <option value="experienced">Experienced (5+ years)</option>
+                        <option value="expert">Expert Gardener</option>
+                    </select>
+                </div>
+                
+                <!-- Corporate Form (Hidden by Default) -->
+                <div class="corporate-form" id="corporate-form-fields">
+                    <h3>Corporate Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company Name *</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position">Your Position *</label>
+                            <input type="text" id="position" name="position">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employees">Number of Employees</label>
+                            <select id="employees" name="employees">
+                                <option value="">Select range</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-200">51-200</option>
+                                <option value="201-500">201-500</option>
+                                <option value="500+">500+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="boxes">Estimated Box Quantity</label>
+                            <input type="number" id="boxes" name="boxes" min="10" placeholder="Minimum 10 boxes">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">Purpose of Inquiry</label>
+                        <select id="purpose" name="purpose">
+                            <option value="">Select purpose</option>
+                            <option value="corporate-gifts">Corporate Gifts</option>
+                            <option value="team-building">Team Building</option>
+                            <option value="client-appreciation">Client Appreciation</option>
+                            <option value="wellness-program">Employee Wellness Program</option>
+                            <option value="partnership">Business Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="newsletter" checked>
+                        Subscribe to our monthly gardening newsletter
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="terms" required>
+                        I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a> *
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-large">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find quick answers to common questions</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I choose the right box for me?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend taking our 2-minute Garden Quiz on the homepage. It will analyze your space, experience level, and goals to recommend the perfect box. You can also compare all boxes on our Boxes page or contact our experts for personalized advice.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your shipping policy?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We ship to the UK, EU, and selected Asian countries. Shipping is free for orders over £50. Standard delivery takes 3-5 business days, express delivery 1-2 business days. Live plants are shipped with special care instructions and guarantees.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I customize my subscription box?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All our boxes offer customization options. For individual subscriptions, you can modify delivery frequency, select preferences, and add special requests. For corporate orders, we offer fully customized boxes with branding and tailored contents.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer refunds or exchanges?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day satisfaction guarantee. If you're not happy with your box, contact us within 30 days for a full refund or exchange. For plants that don't thrive, we offer replacements within the first 60 days with proper care documentation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I contact gardening experts?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can contact our gardening experts through the "Ask an Expert" option in the contact form, via live chat during business hours, or by posting in our Community forums. Expert responses are typically provided within 24-48 hours.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <p>Don't see your question here? <a href="#main-contact-form">Ask us directly</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Gardening Experts</h2>
+                <p>Our team is passionate about helping you succeed in your gardening journey</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Lily Chen">
+                    <h3>Dr. Lily Chen</h3>
+                    <p>Head Horticulturist</p>
+                    <p>PhD in Plant Sciences, 15+ years experience</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tom Green">
+                    <h3>Tom Green</h3>
+                    <p>Organic Gardening Expert</p>
+                    <p>Specialist in sustainable and organic methods</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sarah Wilson">
+                    <h3>Sarah Wilson</h3>
+                    <p>Community Manager</p>
+                    <p>Connecting gardeners and organizing events</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="James Miller">
+                    <h3>James Miller</h3>
+                    <p>Customer Success Lead</p>
+                    <p>Ensuring your gardening success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="locations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Locations</h2>
+                <p>We operate across multiple regions to serve gardeners worldwide</p>
+            </div>
+            
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> London, UK</h3>
+                    <p>Headquarters & Customer Support</p>
+                    <p>123 Garden Street, London W1A 1AA</p>
+                    <p><i class="fas fa-phone"></i> +44 20 1234 5678</p>
+                </div>
+                
+                <div class="location-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Auckland, NZ</h3>
+                    <p>Asia-Pacific Operations</p>
+                    <p>456 Green Lane, Auckland 1010</p>
+                    <p><i class="fas fa-phone"></i> +64 9 876 5432</p>
+                </div>
+                
+                <div class="location-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Singapore</h3>
+                    <p>Southeast Asia Hub</p>
+                    <p>789 Orchard Road, Singapore 238839</p>
+                    <p><i class="fas fa-phone"></i> +65 6123 4567</p>
+                </div>
+            </div>
+            
+            <div class="contact-map">
+                <!-- Map placeholder - in real implementation would use Google Maps API -->
+                <div style="width: 100%; height: 100%; background: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #666;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>Interactive Map of Our Locations</p>
+                        <p>(Google Maps integration would go here)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>We're here to help you grow. Contact us through any of the methods above.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+442012345678" class="btn btn-large">
+                        <i class="fas fa-phone"></i> Call Us Now
+                    </a>
+                    <button class="btn-secondary btn-large" id="open-chat">
+                        <i class="fas fa-comments"></i> Start Live Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Gardens</h3>
+                    <p class="footer-description">Helping gardeners grow since 2018.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Methods</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> hello@gardens.com</li>
+                        <li><i class="fas fa-phone"></i> +44 20 1234 5678</li>
+                        <li><i class="fas fa-comments"></i> Live Chat Support</li>
+                        <li><i class="fas fa-building"></i> Corporate: corporate@gardens.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Business Hours</h3>
+                    <ul>
+                        <li>Monday-Friday: 9AM-6PM GMT</li>
+                        <li>Saturday: 10AM-4PM GMT</li>
+                        <li>Sunday: Closed</li>
+                        <li>24/7 Online Support</li>
+                        <li>Emergency Plant Care: Available</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="boxes.html">Shop Boxes</a></li>
+                        <li><a href="gardeners-hub.html">Gardening Guides</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Gardens. All rights reserved.</p>
+                <p>Registered in England & Wales No. 12345678 | VAT No. GB 123 4567 89</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget (Simulated) -->
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-header">
+            <h4><i class="fas fa-comments"></i> Gardens Support</h4>
+            <button class="chat-close">&times;</button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-message bot">
+                <p>Hello! I'm your Gardens assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact type selector
+        const contactTypeButtons = document.querySelectorAll('.contact-type-btn');
+        const corporateForm = document.getElementById('corporate-form-fields');
+        
+        contactTypeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                contactTypeButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show/hide corporate form
+                if (this.dataset.type === 'corporate') {
+                    corporateForm.classList.add('active');
+                } else {
+                    corporateForm.classList.remove('active');
+                }
+            });
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                answer.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('main-contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate form submission
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert('Thank you for your message! We will get back to you within 24 hours.');
+                    contactForm.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+        }
+        
+        // Chat widget
+        const chatWidget = document.getElementById('chat-widget');
+        const openChatBtn = document.getElementById('open-chat');
+        const liveChatBtn = document.getElementById('live-chat-btn');
+        const chatClose = document.querySelector('.chat-close');
+        
+        function openChat() {
+            chatWidget.style.display = 'block';
+            setTimeout(() => {
+                chatWidget.style.opacity = '1';
+                chatWidget.style.transform = 'translateY(0)';
+            }, 10);
+        }
+        
+        function closeChat() {
+            chatWidget.style.opacity = '0';
+            chatWidget.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                chatWidget.style.display = 'none';
+            }, 300);
+        }
+        
+        if (openChatBtn) openChatBtn.addEventListener('click', openChat);
+        if (liveChatBtn) liveChatBtn.addEventListener('click', openChat);
+        if (chatClose) chatClose.addEventListener('click', closeChat);
+        
+        // Style for chat widget
+        const chatStyle = document.createElement('style');
+        chatStyle.textContent = `
+            .chat-widget {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 350px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+                display: none;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+                z-index: 1000;
+                overflow: hidden;
+            }
+            
+            .chat-header {
+                background: var(--primary-green);
+                color: white;
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .chat-header h4 {
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .chat-close {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .chat-body {
+                height: 300px;
+                padding: 1rem;
+                overflow-y: auto;
+            }
+            
+            .chat-message {
+                margin-bottom: 1rem;
+                padding: 0.75rem 1rem;
+                border-radius: 10px;
+                max-width: 80%;
+            }
+            
+            .chat-message.bot {
+                background: var(--light-green);
+                margin-right: auto;
+            }
+            
+            .chat-message.user {
+                background: var(--primary-green);
+                color: white;
+                margin-left: auto;
+            }
+            
+            .chat-input {
+                display: flex;
+                padding: 1rem;
+                border-top: 1px solid #eee;
+                gap: 0.5rem;
+            }
+            
+            .chat-input input {
+                flex: 1;
+                padding: 0.75rem;
+                border: 2px solid #eee;
+                border-radius: 8px;
+            }
+            
+            .chat-input button {
+                background: var(--primary-green);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                width: 40px;
+                cursor: pointer;
+            }
+            
+            @media (max-width: 768px) {
+                .chat-widget {
+                    width: calc(100% - 40px);
+                    bottom: 10px;
+                    right: 10px;
+                }
+            }
+        `;
+        document.head.appendChild(chatStyle);
+    </script>
+</body>
+</html>
