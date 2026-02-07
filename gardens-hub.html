@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardens | Gardeners Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .gardeners-hub-hero {
+            background: linear-gradient(135deg, rgba(26, 71, 42, 0.9), rgba(45, 90, 39, 0.8)), 
+                        url('https://images.unsplash.com/photo-1598880940080-ff9a29891b85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+        
+        .hub-search {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .hub-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .hub-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .hub-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .hub-category i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .expert-corner {
+            background: linear-gradient(135deg, #2d5a27, #3e7b34);
+            color: white;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            border-radius: 20px;
+        }
+        
+        .expert-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .expert-article {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .hub-resources {
+            background: var(--light-green);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .resource-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .resource-item i {
+            font-size: 2rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1><i class="fas fa-leaf"></i> Gardens</h1></a>
+            </div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="boxes.html">Boxes</a></li>
+                    <li><a href="gardeners-hub.html" class="active">Gardeners Hub</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gardeners-hub-hero">
+        <div class="container">
+            <h1>Gardeners Hub</h1>
+            <p class="subtitle">Your comprehensive resource for everything gardening</p>
+            
+            <div class="hub-search">
+                <p>Search thousands of articles, guides, and resources</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for gardening tips, problems, plants...">
+                    <button class="btn"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Find Toolbar -->
+    <section class="quick-find-section">
+        <div class="container">
+            <div class="quick-find-toolbar">
+                <h2>Quick Find Tools</h2>
+                <p>Filter content by your specific needs and interests</p>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Topics</button>
+                    <button class="filter-btn" data-filter="beginner">Beginner Basics</button>
+                    <button class="filter-btn" data-filter="seasonal">Seasonal Tasks</button>
+                    <button class="filter-btn" data-filter="greenhouse">Greenhouse Tips</button>
+                    <button class="filter-btn" data-filter="allotment">Allotment Jobs</button>
+                    <button class="filter-btn" data-filter="pests">Pest Control</button>
+                    <button class="filter-btn" data-filter="soil">Soil Health</button>
+                </div>
+                
+                <div class="problem-filters">
+                    <div class="filter-group">
+                        <label>Filter by Problem:</label>
+                        <select id="problem-filter">
+                            <option value="">Select a problem...</option>
+                            <option value="pests">Pests & Diseases</option>
+                            <option value="nutrient">Nutrient Deficiency</option>
+                            <option value="watering">Watering Issues</option>
+                            <option value="weather">Weather Damage</option>
+                            <option value="soil">Soil Problems</option>
+                            <option value="growth">Poor Growth</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Filter by Goal:</label>
+                        <select id="goal-filter">
+                            <option value="">Select a goal...</option>
+                            <option value="food">Grow Food</option>
+                            <option value="flowers">Grow Flowers</option>
+                            <option value="wildlife">Attract Wildlife</option>
+                            <option value="low-maintenance">Low Maintenance</option>
+                            <option value="indoor">Indoor Gardening</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Filter by Space:</label>
+                        <select id="space-filter">
+                            <option value="">Select space...</option>
+                            <option value="balcony">Balcony</option>
+                            <option value="garden">Garden</option>
+                            <option value="allotment">Allotment</option>
+                            <option value="indoor">Indoor</option>
+                            <option value="window">Window Box</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hub Categories -->
+    <section class="hub-categories-section">
+        <div class="container">
+            <div class="hub-categories">
+                <div class="hub-category">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Beginner Basics</h3>
+                    <p>Start your gardening journey with our comprehensive beginner guides and tutorials.</p>
+                    <a href="#" class="btn-small">Explore</a>
+                </div>
+                
+                <div class="hub-category">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Seasonal Guides</h3>
+                    <p>Month-by-month gardening tasks and seasonal planting advice.</p>
+                    <a href="#" class="btn-small">Explore</a>
+                </div>
+                
+                <div class="hub-category">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Plant Directory</h3>
+                    <p>Comprehensive guide to plants, vegetables, flowers, and herbs.</p>
+                    <a href="#" class="btn-small">Explore</a>
+                </div>
+                
+                <div class="hub-category">
+                    <i class="fas fa-bug"></i>
+                    <h3>Pest Solutions</h3>
+                    <p>Identify and treat common garden pests with natural solutions.</p>
+                    <a href="#" class="btn-small">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Month's Focus -->
+    <section class="monthly-focus">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-check"></i> November Focus: Winter Preparation</h2>
+                <p>Essential tasks to prepare your garden for winter</p>
+            </div>
+            
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Winter Protection">
+                    <h3>Protect Tender Plants</h3>
+                    <p>How to protect your plants from frost and cold weather damage.</p>
+                    <a href="#" class="read-more">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="focus-card">
+                    <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tool Maintenance">
+                    <h3>Tool Maintenance</h3>
+                    <p>Clean, sharpen, and store your gardening tools for winter.</p>
+                    <a href="#" class="read-more">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="focus-card">
+                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Spring Planning">
+                    <h3>Plan for Spring</h3>
+                    <p>Order seeds, plan your layout, and prepare for next season.</p>
+                    <a href="#" class="read-more">Read Guide <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Corner -->
+    <section class="expert-corner">
+        <div class="container">
+            <div class="section-header">
+                <h2>Expert Corner</h2>
+                <p>Deep dive articles from our gardening experts</p>
+            </div>
+            
+            <div class="expert-articles">
+                <article class="expert-article">
+                    <h3>Composting Masterclass</h3>
+                    <p>Learn how to create perfect compost for your garden, including hot composting techniques and troubleshooting common issues.</p>
+                    <div class="article-meta">
+                        <span>Dr. Lily Chen</span>
+                        <span>15 min read</span>
+                    </div>
+                </article>
+                
+                <article class="expert-article">
+                    <h3>Companion Planting Guide</h3>
+                    <p>Discover which plants grow well together to improve yields, deter pests, and enhance biodiversity in your garden.</p>
+                    <div class="article-meta">
+                        <span>Tom Green</span>
+                        <span>12 min read</span>
+                    </div>
+                </article>
+                
+                <article class="expert-article">
+                    <h3>Organic Pest Control</h3>
+                    <p>Natural solutions for common garden pests without using harmful chemicals. Safe for children, pets, and wildlife.</p>
+                    <div class="article-meta">
+                        <span>Sarah Wilson</span>
+                        <span>18 min read</span>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="expert-cta">
+                <a href="#" class="btn">View All Expert Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hub Resources -->
+    <section class="hub-resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Free Gardening Resources</h2>
+                <p>Download our free guides, charts, and tools</p>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Planting Calendar</h3>
+                    <p>Month-by-month planting guide for your region</p>
+                    <a href="#" class="btn-small">Download PDF</a>
+                </div>
+                
+                <div class="resource-item">
+                    <i class="fas fa-bug"></i>
+                    <h3>Pest ID Chart</h3>
+                    <p>Identify common pests and organic solutions</p>
+                    <a href="#" class="btn-small">Download PDF</a>
+                </div>
+                
+                <div class="resource-item">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Soil Calculator</h3>
+                    <p>Calculate how much soil you need for any space</p>
+                    <a href="#" class="btn-small">Use Tool</a>
+                </div>
+                
+                <div class="resource-item">
+                    <i class="fas fa-ruler"></i>
+                    <h3>Garden Planner</h3>
+                    <p>Plan your garden layout and crop rotation</p>
+                    <a href="#" class="btn-small">Download Template</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hub Articles Grid -->
+    <section class="hub-articles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Articles</h2>
+                <p>Fresh gardening advice updated weekly</p>
+            </div>
+            
+            <div class="hub-grid" id="hub-articles-grid">
+                <!-- Articles will be filtered here -->
+                <article class="hub-card" data-topic="beginner" data-problem="" data-goal="food" data-space="balcony">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Beginner gardening">
+                    <div class="hub-card-content">
+                        <h3>Starting a Balcony Vegetable Garden</h3>
+                        <p>Complete guide to growing vegetables in small spaces. Perfect for beginners with limited space.</p>
+                        <div class="tags">
+                            <span class="tag beginner">Beginner</span>
+                            <span class="tag balcony">Balcony</span>
+                            <span class="tag food">Food</span>
+                        </div>
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="hub-card" data-topic="greenhouse" data-problem="pests" data-goal="food" data-space="garden">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Greenhouse pest control">
+                    <div class="hub-card-content">
+                        <h3>Natural Pest Control in Greenhouses</h3>
+                        <p>How to manage aphids, whiteflies, and spider mites without chemicals. Companion planting solutions.</p>
+                        <div class="tags">
+                            <span class="tag expert">Expert</span>
+                            <span class="tag pests">Pests</span>
+                            <span class="tag greenhouse">Greenhouse</span>
+                        </div>
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="hub-card" data-topic="seasonal" data-problem="weather" data-goal="flowers" data-space="garden">
+                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Winter gardening">
+                    <div class="hub-card-content">
+                        <h3>Winter Gardening: What to Plant Now</h3>
+                        <p>Cold-tolerant vegetables and flowers you can plant now for winter and early spring harvest.</p>
+                        <div class="tags">
+                            <span class="tag seasonal">Seasonal</span>
+                            <span class="tag weather">Weather</span>
+                            <span class="tag flowers">Flowers</span>
+                        </div>
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="hub-card" data-topic="soil" data-problem="nutrient" data-goal="food" data-space="allotment">
+                    <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Soil preparation">
+                    <div class="hub-card-content">
+                        <h3>Improving Soil Health Naturally</h3>
+                        <p>How to test your soil and improve it with organic amendments for better plant growth.</p>
+                        <div class="tags">
+                            <span class="tag soil">Soil</span>
+                            <span class="tag nutrient">Nutrient</span>
+                            <span class="tag allotment">Allotment</span>
+                        </div>
+                        <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="hub-cta">
+                <a href="#" class="btn">Load More Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="hub-newsletter">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <h2>Get Weekly Gardening Tips</h2>
+                    <p>Subscribe to our newsletter and receive expert advice, seasonal reminders, and exclusive hub content.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn">Subscribe</button>
+                        </div>
+                        <p class="form-note">No spam, just pure gardening wisdom.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Gardens Hub</h3>
+                    <p class="footer-description">Your trusted source for gardening knowledge since 2018.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hub Categories</h3>
+                    <ul>
+                        <li><a href="#">Beginner Basics</a></li>
+                        <li><a href="#">Seasonal Guides</a></li>
+                        <li><a href="#">Plant Directory</a></li>
+                        <li><a href="#">Pest Solutions</a></li>
+                        <li><a href="#">Soil Health</a></li>
+                        <li><a href="#">Tool Guides</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Planting Calendar</a></li>
+                        <li><a href="#">Pest ID Chart</a></li>
+                        <li><a href="#">Garden Planner</a></li>
+                        <li><a href="#">Soil Calculator</a></li>
+                        <li><a href="#">Expert Articles</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Ask an Expert</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> experts@gardens.com</li>
+                        <li><i class="fas fa-comments"></i> Live Chat Support</li>
+                        <li><i class="fas fa-question-circle"></i> FAQ Database</li>
+                        <li><i class="fas fa-video"></i> Video Consultations</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Gardens Hub. All content is reviewed by gardening experts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Newsletter -->
+    <div class="sticky-newsletter" id="hub-sticky-newsletter">
+        <div class="sticky-content">
+            <div class="sticky-message">
+                <i class="fas fa-download"></i>
+                <div>
+                    <strong>Free Download: Winter Gardening Checklist</strong>
+                    <p>Get your free PDF guide to winter garden preparation</p>
+                </div>
+            </div>
+            <form class="sticky-form">
+                <input type="email" placeholder="Email for download" required>
+                <button type="submit" class="btn-small">Get Checklist</button>
+            </form>
+            <button class="close-sticky" aria-label="Close">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="hub-filter.js"></script>
+</body>
+</html>
