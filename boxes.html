@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardens | Subscription Boxes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .box-comparison {
+            background: var(--light-green);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-green);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(45, 90, 39, 0.05);
+        }
+        
+        .feature-icon {
+            color: var(--accent-orange);
+            margin-right: 0.5rem;
+        }
+        
+        .box-customization {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .customization-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        
+        .customization-option {
+            text-align: center;
+            padding: var(--space-md);
+            border: 2px solid var(--light-green);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+        
+        .customization-option:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+        }
+        
+        .customization-option i {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .box-testimonial {
+            background: linear-gradient(135deg, #1a472a, #2d5a27);
+            color: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonial-rating {
+            color: #ffd700;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1><i class="fas fa-leaf"></i> Gardens</h1></a>
+            </div>
+            <nav class="nav-main">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="boxes.html" class="active">Boxes</a></li>
+                    <li><a href="gardeners-hub.html">Gardeners Hub</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Curated Gardening Boxes</h1>
+                <p>Discover our hand-picked subscription boxes designed for every gardener</p>
+                <a href="#boxes-grid" class="btn btn-large">
+                    Explore Boxes <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boxes Introduction -->
+    <section class="boxes-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Perfect for Every Gardener</h2>
+                <p>From beginner to expert, urban balcony to country garden, we have a box that fits your needs, space, and skill level.</p>
+                <a href="#comparison" class="btn-secondary">Compare All Boxes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boxes Grid -->
+    <section class="boxes-grid-section" id="boxes-grid">
+        <div class="container">
+            <div class="boxes-grid">
+                <!-- Oddbox -->
+                <article class="box-card featured">
+                    <div class="box-badge">Most Popular</div>
+                    <div class="box-image">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oddbox">
+                        <div class="box-overlay">
+                            <button class="box-quick-view" data-box="oddbox">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <h3>Oddbox</h3>
+                        <div class="box-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (2,134 reviews)</span>
+                        </div>
+                        <p class="box-subtitle">Perfect for beginners • Weekly deliveries</p>
+                        <p class="box-description">Rescue wonky vegetables rejected by supermarkets, plus seeds and exclusive blog access.</p>
+                        <div class="box-features">
+                            <span><i class="fas fa-check-circle feature-icon"></i> Weekly vegetable deliveries</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Seasonal seeds included</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Access to expert blog</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Perfect for small spaces</span>
+                        </div>
+                        <div class="box-footer">
+                            <div class="box-pricing">
+                                <span class="box-price">£18/month</span>
+                                <span class="box-savings">Save 20% with annual plan</span>
+                            </div>
+                            <button class="btn" data-box="oddbox">Choose Plan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Flourish -->
+                <article class="box-card">
+                    <div class="box-badge">Seasonal</div>
+                    <div class="box-image">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flourish">
+                        <div class="box-overlay">
+                            <button class="box-quick-view" data-box="flourish">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <h3>Flourish</h3>
+                        <div class="box-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (894 reviews)</span>
+                        </div>
+                        <p class="box-subtitle">Four seasonal boxes • Complete starter kit</p>
+                        <p class="box-description">Quarterly boxes with everything you need for seasonal gardening success.</p>
+                        <div class="box-features">
+                            <span><i class="fas fa-check-circle feature-icon"></i> 4 boxes per year (seasonal)</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Seeds with seed trays</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Watering can included</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Handmade cruelty-free soap</span>
+                        </div>
+                        <div class="box-footer">
+                            <div class="box-pricing">
+                                <span class="box-price">£75/year</span>
+                                <span class="box-savings">£18.75 per box</span>
+                            </div>
+                            <button class="btn" data-box="flourish">Choose Plan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cottage -->
+                <article class="box-card">
+                    <div class="box-badge">Wildflowers</div>
+                    <div class="box-image">
+                        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cottage">
+                        <div class="box-overlay">
+                            <button class="box-quick-view" data-box="cottage">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <h3>Cottage</h3>
+                        <div class="box-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9 (1,567 reviews)</span>
+                        </div>
+                        <p class="box-subtitle">Monthly wildflowers • Educational</p>
+                        <p class="box-description">Transform your space into a cottage garden paradise with monthly wildflower deliveries.</p>
+                        <div class="box-features">
+                            <span><i class="fas fa-check-circle feature-icon"></i> Monthly wild flower seeds</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Educational fact cards</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Seed markers and twine</span>
+                            <span><i class="fas fa-check-circle feature-icon"></i> Perfect for pollinators</span>
+                        </div>
+                        <div class="box-footer">
+                            <div class="box-pricing">
+                                <span class="box-price">£22/month</span>
+                                <span class="box-savings">Save 15% with annual plan</span>
+                            </div>
+                            <button class="btn" data-box="cottage">Choose Plan</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Box Comparison -->
+    <section class="box-comparison" id="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>Compare All Boxes</h2>
+                <p>Find the perfect box for your gardening needs</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>Oddbox</th>
+                        <th>Flourish</th>
+                        <th>Cottage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Price</td>
+                        <td>£18/month</td>
+                        <td>£75/year</td>
+                        <td>£22/month</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Frequency</td>
+                        <td>Weekly</td>
+                        <td>Quarterly (4x/year)</td>
+                        <td>Monthly</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>Beginners & Small Spaces</td>
+                        <td>Seasonal Gardeners</td>
+                        <td>Wildflower Enthusiasts</td>
+                    </tr>
+                    <tr>
+                        <td>Vegetables Included</td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Flower Seeds Included</td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Tools Included</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check feature-icon"></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Educational Materials</td>
+                        <td>Blog Access</td>
+                        <td>Growing Guides</td>
+                        <td>Fact Cards</td>
+                    </tr>
+                    <tr>
+                        <td>Difficulty Level</td>
+                        <td>Beginner</td>
+                        <td>Intermediate</td>
+                        <td>Beginner to Intermediate</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="comparison-cta">
+                <button class="btn" id="compare-btn">Download Comparison Chart (PDF)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Boxes -->
+    <section class="box-customization" id="corporate">
+        <div class="container">
+            <div class="section-header">
+                <h2>Custom Corporate Boxes</h2>
+                <p>Perfect for corporate gifts, team building, and client appreciation</p>
+            </div>
+            
+            <div class="customization-options">
+                <div class="customization-option">
+                    <i class="fas fa-gift"></i>
+                    <h3>Corporate Gifting</h3>
+                    <p>Custom branded boxes for clients and employees</p>
+                </div>
+                
+                <div class="customization-option">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Building</h3>
+                    <p>Gardening workshops and team planting sessions</p>
+                </div>
+                
+                <div class="customization-option">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Seasonal Programs</h3>
+                    <p>Quarterly box programs for year-round engagement</p>
+                </div>
+                
+                <div class="customization-option">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Wellness Packages</h3>
+                    <p>Gardening for stress relief and mindfulness</p>
+                </div>
+            </div>
+            
+            <div class="customization-form">
+                <h3>Request a Corporate Proposal</h3>
+                <form id="corporate-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Company Name" required>
+                        <input type="email" placeholder="Work Email" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="number" placeholder="Number of Boxes" min="10" required>
+                        <select required>
+                            <option value="">Select Budget Range</option>
+                            <option value="low">£500-£2,000</option>
+                            <option value="medium">£2,000-£5,000</option>
+                            <option value="high">£5,000+</option>
+                        </select>
+                    </div>
+                    <textarea placeholder="Tell us about your needs..." rows="4"></textarea>
+                    <button type="submit" class="btn">Request Proposal</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="box-testimonial">
+        <div class="container">
+            <div class="section-header" style="color: white;">
+                <h2>What Our Gardeners Say</h2>
+                <p>Join thousands of happy gardeners growing with us</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The Oddbox transformed my tiny balcony into a productive vegetable garden. As a complete beginner, the weekly guidance was invaluable!"</p>
+                    <div class="testimonial-author">
+                        <strong>Annie M.</strong>
+                        <span>Begninner Gardener, London</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Flourish boxes have taken my gardening to the next level. The seasonal approach and quality tools are exceptional."</p>
+                    <div class="testimonial-author">
+                        <strong>Evan R.</strong>
+                        <span>Experienced Gardener, Edinburgh</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"We ordered custom boxes for our corporate clients and the feedback was incredible. Gardens made the entire process seamless."</p>
+                    <div class="testimonial-author">
+                        <strong>Chris B.</strong>
+                        <span>Corporate Client, Manchester</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="boxes-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Gardening Journey?</h2>
+                <p>Take our 2-minute quiz to find your perfect box match.</p>
+                <button class="btn btn-large" id="box-quiz-btn">
+                    Take the Box Quiz <i class="fas fa-play-circle"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Gardens</h3>
+                    <p class="footer-description">Curated gardening boxes for every skill level and space.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Boxes</h3>
+                    <ul>
+                        <li><a href="#oddbox">Oddbox</a></li>
+                        <li><a href="#flourish">Flourish</a></li>
+                        <li><a href="#cottage">Cottage</a></li>
+                        <li><a href="#corporate">Corporate Boxes</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Seasonal Specials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Box Customization</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Sales</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> sales@gardens.com</li>
+                        <li><i class="fas fa-phone"></i> +44 20 8765 4321</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-8PM</li>
+                        <li><i class="fas fa-building"></i> Corporate Inquiries Welcome</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Gardens. All boxes are delivered with sustainable packaging.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Box Modal -->
+    <div id="box-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="box-modal-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Box quick view functionality
+        document.querySelectorAll('.box-quick-view').forEach(button => {
+            button.addEventListener('click', function() {
+                const boxType = this.dataset.box;
+                const modal = document.getElementById('box-modal');
+                const modalContent = document.getElementById('box-modal-content');
+                
+                const boxDetails = {
+                    oddbox: `
+                        <div class="modal-box-details">
+                            <h2>Oddbox Complete Details</h2>
+                            <div class="modal-box-image">
+                                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Oddbox">
+                            </div>
+                            <div class="modal-box-info">
+                                <div class="modal-price">
+                                    <span class="price-main">£18/month</span>
+                                    <span class="price-savings">or £180/year (save £36)</span>
+                                </div>
+                                <div class="modal-features">
+                                    <h3>What's Included:</h3>
+                                    <ul>
+                                        <li>Weekly delivery of wonky vegetables (3-5 types)</li>
+                                        <li>Seasonal seed packets (changes monthly)</li>
+                                        <li>Exclusive access to Oddbox blog</li>
+                                        <li>Growing guides and recipes</li>
+                                        <li>Surprise seasonal extras</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-customization">
+                                    <h3>Customize Your Box:</h3>
+                                    <select>
+                                        <option>Weekly Delivery</option>
+                                        <option>Bi-weekly Delivery</option>
+                                        <option>Monthly Delivery</option>
+                                    </select>
+                                    <select>
+                                        <option>All Vegetables</option>
+                                        <option>Root Vegetables Only</option>
+                                        <option>Leafy Greens Only</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-large" style="width: 100%; margin-top: 2rem;">Subscribe Now</button>
+                            </div>
+                        </div>
+                    `,
+                    flourish: `
+                        <div class="modal-box-details">
+                            <h2>Flourish Complete Details</h2>
+                            <div class="modal-box-image">
+                                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flourish">
+                            </div>
+                            <div class="modal-box-info">
+                                <div class="modal-price">
+                                    <span class="price-main">£75/year</span>
+                                    <span class="price-savings">4 seasonal boxes (£18.75 per box)</span>
+                                </div>
+                                <div class="modal-features">
+                                    <h3>Seasonal Boxes:</h3>
+                                    <ul>
+                                        <li><strong>Spring Box:</strong> Seed starting kit, early vegetables, garden planner</li>
+                                        <li><strong>Summer Box:</strong> Watering can, pest control, summer crops</li>
+                                        <li><strong>Autumn Box:</strong> Harvest tools, preserving guide, bulbs</li>
+                                        <li><strong>Winter Box:</strong> Indoor gardening kit, planning materials, soap</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-customization">
+                                    <h3>Choose Your Start Month:</h3>
+                                    <select>
+                                        <option>Start in January (Winter Box)</option>
+                                        <option>Start in April (Spring Box)</option>
+                                        <option>Start in July (Summer Box)</option>
+                                        <option>Start in October (Autumn Box)</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-large" style="width: 100%; margin-top: 2rem;">Subscribe Now</button>
+                            </div>
+                        </div>
+                    `,
+                    cottage: `
+                        <div class="modal-box-details">
+                            <h2>Cottage Complete Details</h2>
+                            <div class="modal-box-image">
+                                <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cottage">
+                            </div>
+                            <div class="modal-box-info">
+                                <div class="modal-price">
+                                    <span class="price-main">£22/month</span>
+                                    <span class="price-savings">or £225/year (save £39)</span>
+                                </div>
+                                <div class="modal-features">
+                                    <h3>Monthly Themes:</h3>
+                                    <ul>
+                                        <li><strong>January:</strong> Early bloomers (Snowdrops, Crocus)</li>
+                                        <li><strong>February:</strong> Pollinator favorites (Primrose, Hellebore)</li>
+                                        <li><strong>March:</strong> Spring bulbs (Daffodils, Tulips)</li>
+                                        <li><strong>April:</strong> Cottage classics (Lavender, Foxglove)</li>
+                                        <li><em>...and 8 more monthly themes!</em></li>
+                                    </ul>
+                                </div>
+                                <div class="modal-customization">
+                                    <h3>Customize Your Box:</h3>
+                                    <select>
+                                        <option>UK Native Wildflowers</option>
+                                        <option>Pollinator-Friendly Mix</option>
+                                        <option>Shade-Tolerant Varieties</option>
+                                        <option>Cut Flower Selection</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-large" style="width: 100%; margin-top: 2rem;">Subscribe Now</button>
+                            </div>
+                        </div>
+                    `
+                };
+                
+                modalContent.innerHTML = boxDetails[boxType] || '<p>Details not available</p>';
+                modal.style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
